@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #286BE1;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0px;
+  width: 0px;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #286BE1 #E8E8E8;
+}
+
+html, body {
+  height: 100%;
+}
+
+@theme {
+
+  /* common */
+  --radius-radius-8px: 8px;
+  --radius-radius-15px: 15px;
+  --radius-radius-10px: 10px;
+  --radius-radius-20px: 20px;
+  --radius-radius-6px: 6px;
+  --color-form-border-color: #D5D7DA;
+  --color-dashboard-and-form-text: #4E6C80;
+
+  /* login page */
+  --spacing-form-field-login-h: 44px;
+  --text-form-label-login: 14px;
+  --font-weight-form-label-login: 500;
+  --color-form-label-login-text: #414651;
+  --color-form-submit-button-bg: #286BE1;
+  --color-form-submit-button-bg-disabled: #BDD6FB;
+  --color-form-submit-button-text: white;
+  --color-form-submit-button-text-disabled: #689EF3;
+  --spacing-form-logo-h: 110px;
+  --spacing-form-logo-w-lg: 300px;
+  --spacing-form-logo-w-md: 240px;
+  --color-form-focus-field-ring: #77A5EE;
+  --shadow-form-focus-field: 0 0 12px 0 rgba(119,165,238,0.25);
+  
+
+  /* DashBoard Page */
+  --color-button-text: #9AABB6;
+  --color-hover-button-bg: #EBF0FE;
+  --color-hover-button-text: #829DFA;
+  --text-button-size: 18px;
+  --font-weight-button-weight: 400;
+  --font-weight-button-weight-sm: 700;
+  --spacing-button-px: 10px;
+  --spacing-button-py: 8px;
+  --spacing-button-h: 40px;
+  --spacing-button-w: 108px;
+  --spacing-components-gap: 13px;
+
+
+  /* AppComponent */
+  /* --text-appname-size: 24px; */
+  --color-menu-button-bg: #EBEFF1;
+  --color-menu-button-hover-bg: #D6DDE2;
+
+  /* App Form */
+  --color-preview-image-border-color: #E9EEF0;
+
+  /* Icon Picker */
+  --color-button-border-color: #E4E4E4;
+  --color-button-bg: #286BE1;
+}
+
+@media (min-width: 1950px) {
+  .h-3xl {
+    height: 51vh;
+  }
+}
+
+@media (min-width: 2190px) {
+  .h-3-4xl {
+    height: 42.5vh;
+  }
+}
+
+@media (min-width: 2600px) {
+  .h-4xl {
+    height: 40vh;
+  }
+}
+
+@media (min-width: 4130px) {
+  .h-5xl {
+    height: 35.5vh;
+  }
+}
+
+
+@media (min-width: 1680px) {
+  .pt-3xl {
+    padding-top: 2.25rem;
+  }
+}
+
+@media (min-width: 2300px) {
+  .pt-4xl {
+    padding-top: 2.2rem;
+  }
+}
+
+@media (min-width: 3350px) {
+  .pt-5xl {
+    padding-top: 3.5rem;
+  }
+}
+
+
+@media (min-width: 2600px) {
+  .top-3xl {
+    top: 4.5rem;
+  }
+}
+
+@media (min-width: 2800px) {
+  .right-3xl {
+    right: -16rem;
+  }
+}
+
+@media (min-width: 2800px) {
+  .left-3xl {
+    left: -16rem;
+  }
+}
+
+
+@media (min-width: 2600px) {
+  .wi-4xl {
+    width: 32vw;
+  }
+}
+
+@media (min-width: 4000px) {
+  .wi-5xl {
+    height: 32vw;
+  }
+}
+
+@media (min-width: 2600px) {
+  .logo-wi-3xl {
+    width: 43rem;
+  }
+}
+
+@media (min-width: 2600px) {
+  .logo-wi-4xl {
+    width: 62rem;
+  }
+}
+
+@media (min-width: 2600px) {
+  .logo-wi-5xl {
+    width: 89rem;
+  }
+}
