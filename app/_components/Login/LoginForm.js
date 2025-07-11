@@ -11,6 +11,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
@@ -19,6 +20,7 @@ export default function LoginForm() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setIsHydrated(true);
     userNameRef.current?.focus();
   }, []);
 
@@ -59,21 +61,44 @@ export default function LoginForm() {
     }
   };
 
+  // Show loading state until hydration is complete to prevent layout shifts
+  if (!isHydrated) {
+    return (
+      <div className="login-container h-screen flex items-center justify-center px-[clamp(1rem,6vw,14rem)] bg-white" style={{ height: '100vh', minHeight: '100vh', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <div className="bg-white rounded-[clamp(0.75rem,1vw,2rem)] border-[clamp(1px,0.12vw,3px)] border-neutral-200 w-[27rem] xl:w-[32rem] 2xl:w-[34vw] wi-4xl p-[clamp(1rem,3vw,4.5rem)]">
+          <div className="flex flex-col items-center md:mb-5 xl:mb-[clamp(0.75rem,1.5vw,4rem)]">
+            <div className="w-full max-sm:px-4 md:w-[21.5rem] xl:w-[25rem] 2xl:w-[37rem] logo-wi-3xl logo-wi-4xl logo-wi-5xl mb-[clamp(1rem,4vw,4rem)]" style={{ height: '190px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="w-48 h-48 bg-gray-100 rounded animate-pulse"></div>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div className="h-12 bg-gray-100 rounded animate-pulse"></div>
+            <div className="h-12 bg-gray-100 rounded animate-pulse"></div>
+            <div className="h-12 bg-gray-100 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="login-container h-screen flex items-center justify-center px-[clamp(1rem,6vw,14rem)] bg-white" style={{ height: '100vh', minHeight: '100vh' }}>
+    <div className="login-container h-screen flex items-center justify-center px-[clamp(1rem,6vw,14rem)] bg-white" style={{ height: '100vh', minHeight: '100vh', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
       <div className="bg-white rounded-[clamp(0.75rem,1vw,2rem)] border-[clamp(1px,0.12vw,3px)] border-neutral-200 w-[27rem] xl:w-[32rem] 2xl:w-[34vw] wi-4xl p-[clamp(1rem,3vw,4.5rem)]">
         <div className="flex flex-col items-center md:mb-5 xl:mb-[clamp(0.75rem,1.5vw,4rem)]">
-          <Image
-            src="/logo.svg"
-            alt="Sequoia Internal Logo"
-            width={190}
-            height={190}
-            className="w-full max-sm:px-4 md:w-[21.5rem] xl:w-[25rem] 2xl:w-[37rem] logo-wi-3xl logo-wi-4xl logo-wi-5xl h-auto mb-[clamp(1rem,4vw,4rem)] object-contain"
-            priority
-          />
+          <div className="w-full max-sm:px-4 md:w-[21.5rem] xl:w-[25rem] 2xl:w-[37rem] logo-wi-3xl logo-wi-4xl logo-wi-5xl mb-[clamp(1rem,4vw,4rem)]" style={{ height: '190px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Image
+              src="/logo.svg"
+              alt="Sequoia Internal Logo"
+              width={190}
+              height={190}
+              className="max-w-full max-h-full object-contain"
+              priority
+              style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '100%' }}
+            />
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ minHeight: '300px' }}>
           <div className="mb-5 xl:mb-[clamp(0.75rem,1.5vw,4rem)]">
             <label
               htmlFor="userName"
@@ -110,11 +135,13 @@ export default function LoginForm() {
             />
           </div>
 
-          {error && (
-            <div className="text-red-500 text-[clamp(1rem,0.9vw,3rem)] mb-[clamp(1rem,1.8vw,2rem)]">
-              {error}
-            </div>
-          )}
+          <div style={{ minHeight: '40px' }}>
+            {error && (
+              <div className="text-red-500 text-[clamp(1rem,0.9vw,3rem)] mb-[clamp(1rem,1.8vw,2rem)]">
+                {error}
+              </div>
+            )}
+          </div>
 
           <button
             type="submit"

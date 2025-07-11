@@ -33,7 +33,19 @@ html, body {
 .login-container {
   height: 100vh !important;
   min-height: 100vh !important;
+  max-height: 100vh !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   transition: none !important;
+  overflow: hidden !important;
+}
+
+/* Prevent scrolling when on login page */
+body:has(.login-container) {
+  overflow: hidden !important;
 }
 
 @theme {
