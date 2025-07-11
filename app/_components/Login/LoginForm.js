@@ -60,7 +60,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-[clamp(1rem,6vw,14rem)] bg-white">
+    <div className="login-container h-screen flex items-center justify-center px-[clamp(1rem,6vw,14rem)] bg-white" style={{ height: '100vh', minHeight: '100vh' }}>
       <div className="bg-white rounded-[clamp(0.75rem,1vw,2rem)] border-[clamp(1px,0.12vw,3px)] border-neutral-200 w-[27rem] xl:w-[32rem] 2xl:w-[34vw] wi-4xl p-[clamp(1rem,3vw,4.5rem)]">
         <div className="flex flex-col items-center md:mb-5 xl:mb-[clamp(0.75rem,1.5vw,4rem)]">
           <Image
